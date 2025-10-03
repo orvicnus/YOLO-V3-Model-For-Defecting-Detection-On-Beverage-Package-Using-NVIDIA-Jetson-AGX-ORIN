@@ -57,3 +57,29 @@ flash.sh : The script that executes the flashing process.
 ${Board} : The type of Jetson board being used. For example, if using Jetson AGX Orin, this should be filled with jetson-agx-orin.
 
 mmcblk0p1 : The target device address of the Jetson connected to the host machine.
+
+
+## **Step 3**
+After completing the flashing process, the next step is to set up the proper environment for using the PyTorch library. Run these syntax to make it through :
+- *$ sudo pip3 install -U jetson-stats*
+
+Installing JTOP – a software tool used to monitor and navigate GPU and CPU usage. At this stage, several essential components should already be installed, such as CUDA, cuDNN, TensorRT, and Vulkan.
+
+- *$ sudo apt install cuda-toolkit-12-2*
+- *$ sudo apt install libcudnn8*
+- *$ sudo apt install nvidia-tensorrt*
+- *$ sudo apt install nvidia-vpi $ sudo apt install nvidia-vpi-dev*
+- *$ sudo apt-get install libopencv-dev libopencv-core-dev libopencv-highgui-dev \
+libopencv-features2d-dev libopencv-calib3d-dev libopencv-imgproc-dev \
+libopencv-video-dev libopencv-objdetect-dev libopencv-contrib-dev \
+libopencv-imgcodecs-dev libopencv-shape-dev libopencv-stitching-dev \
+libopencv-superres-dev libopencv-videostab-dev libopencv-viz-dev*
+- Next, adjust the PyTorch wheel version to match the installed versions of CUDA, cuDNN, and TensorRT. This ensures that PyTorch integrates correctly with the available hardware components, especially the GPU.
+- The next component is torchvision, and make sure that the version installed is compatible with the versions of CUDA, cuDNN, and TensorRT.
+- After all components are installed, the JTOP info panel will display information similar to what is shown bellow :
+
+![](Doc4.png)
+
+[You Can See The Documentation Of Pytorch/Torchvision That match to your jetpack on:](https://forums.developer.nvidia.com/t/pytorch-for-jetson/72048)
+
+
