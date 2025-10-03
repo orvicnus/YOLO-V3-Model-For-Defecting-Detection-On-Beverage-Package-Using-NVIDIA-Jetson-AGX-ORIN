@@ -24,3 +24,27 @@ After 2 condition filled we can start to installing and flashing our jetson :
 
 ## *STEP 2*
 Im going to tell you that flashing is like deleting or formating our system and fill with a new version one. So we have to run a bunch of instruction to do it. But before it we should make connect the Host PC to the Jetson and then make a jetson in factory mode. By press the middle button (Jetson AGX Orin series).
+
+![](Doc3.png)
+
+On the host PC run this syntax :
+- *$ sudo tar xf ${L4T_RELEASE_PACKAGE}*
+This command is used to extract the Linux for Tegra package, which is originally in a tar format, in order to create the environment. The detailed explanation is as follows:
+
+- *$ cd Linux_for_Tegra/rootfs/*
+This command is used to access the Linux for Tegra environment and navigate to the root file system directory. The detailed explanation is as follows:
+
+- *$ sudo tar xpf ../../${SAMPLE_FS_PACKAGE}*
+This command is used to extract the Root File System package (Depend On Your File Name).
+
+- *$ cd ..*
+This command is used to move to the parent directory, which in this case is Linux_for_Tegra.
+
+- *$ sudo ./apply_binaries.sh*
+This command is used to apply binary files contained in Linux for Tegra. It enables interaction with essential Jetson components such as the GPU.
+
+- *$ sudo ./flash.sh ${Board} mmcblk0p1*
+This command is used to start the flashing process. A more detailed explanation is as follows:
+flash.sh : The script that executes the flashing process.
+${Board} : The type of Jetson board being used. For example, if using Jetson AGX Orin, this should be filled with jetson-agx-orin.
+mmcblk0p1 : The target device address of the Jetson connected to the host machine.
